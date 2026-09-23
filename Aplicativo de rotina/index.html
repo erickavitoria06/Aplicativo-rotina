@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriWork</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>NutriWork 💚</h1>
+        <p>Alimentação saudável para trabalhadores</p>
+    </header>
+
+    <nav class="menu">
+        <button onclick="mostrarTela('tela1')">Perfil</button>
+        <button onclick="mostrarTela('tela2')">Rotina</button>
+        <button onclick="mostrarTela('tela3')">Planejamento</button>
+        <button onclick="mostrarTela('tela4')">Compras</button>
+        <button onclick="mostrarTela('tela5')">Gastos</button>
+        <button onclick="mostrarTela('tela6')">Água</button>
+        <button onclick="mostrarTela('tela7')">Metas</button>
+    </nav>
+
+    <main class="container">
+
+        <section id="tela1" class="tela ativa">
+            <h2>Cadastro / Perfil</h2>
+
+            <form id="formPerfil">
+
+                <label>Foto de perfil</label>
+                <input type="file" id="fotoPerfil" accept="image/*">
+
+                <img id="previewFoto" class="foto-perfil" alt="Prévia da foto">
+
+                <label>Nome</label>
+                <input type="text" id="nome" required>
+
+                <label>Email</label>
+                <input type="email" id="email" required>
+
+                <label>Senha</label>
+                <input type="password" id="senha" minlength="6" required>
+
+                <label>Idade</label>
+                <input type="number" id="idade" min="1">
+
+                <label>Rotina de trabalho</label>
+                <select id="rotinaTrabalho" required>
+                    <option value="">Selecione</option>
+                    <option>Presencial</option>
+                    <option>Home office</option>
+                    <option>Híbrido</option>
+                    <option>Turnos</option>
+                </select>
+
+                <label>Horário de trabalho</label>
+                <input type="text" id="horarioTrabalho" required>
+
+                <button class="btn-principal" type="submit">
+                    Salvar perfil
+                </button>
+
+            </form>
+        </section>
+
+        <section id="tela2" class="tela">
+            <h2>Minha rotina</h2>
+
+            <form id="formRotina">
+
+                <label>Tempo disponível para refeições</label>
+                <select id="tempoRefeicao" required>
+                    <option value="">Selecione</option>
+                    <option>Até 15 minutos</option>
+                    <option>30 minutos</option>
+                    <option>1 hora</option>
+                    <option>Mais de 1 hora</option>
+                </select>
+
+                <label>Orçamento semanal (R$)</label>
+                <input type="number" id="orcamento" min="0" step="0.01" required>
+
+                <label>Cozinha disponível?</label>
+                <select id="cozinha" required>
+                    <option value="">Selecione</option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+
+                <label>Geladeira disponível?</label>
+                <select id="geladeira" required>
+                    <option value="">Selecione</option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+
+                <label>Micro-ondas disponível?</label>
+                <select id="microondas" required>
+                    <option value="">Selecione</option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+
+                <label>Alimentação</label>
+                <select id="alimentacao" required>
+                    <option value="">Selecione</option>
+                    <option>Levo marmita</option>
+                    <option>Compro comida</option>
+                    <option>Os dois</option>
+                </select>
+
+                <button class="btn-principal" type="submit">
+                    Salvar rotina
+                </button>
+
+            </form>
+        </section>
+
+        <section id="tela3" class="tela">
+            <h2>Planejamento alimentar</h2>
+
+            <form id="formPlanejamento">
+
+                <label>Café da manhã</label>
+                <input type="text" id="cafeManha" required>
+
+                <label>Almoço</label>
+                <input type="text" id="almoco" required>
+
+                <label>Lanche</label>
+                <input type="text" id="lanche" required>
+
+                <label>Jantar</label>
+                <input type="text" id="jantar" required>
+
+                <label>Organização semanal</label>
+                <textarea id="organizacaoSemanal"></textarea>
+
+                <button class="btn-principal" type="submit">
+                    Salvar planejamento
+                </button>
+
+            </form>
+        </section>
+
+        <section id="tela4" class="tela">
+            <h2>Lista de compras</h2>
+
+            <form id="formCompra">
+
+                <label>Produto</label>
+                <input type="text" id="produto" required>
+
+                <label>Quantidade</label>
+                <input type="number" id="quantidade" min="0.01" step="0.01" required>
+
+                <label>Unidade</label>
+                <select id="unidade" required>
+                    <option value="">Selecione</option>
+                    <option>Unidade</option>
+                    <option>Kg</option>
+                    <option>g</option>
+                    <option>L</option>
+                    <option>ml</option>
+                    <option>Pacote</option>
+                </select>
+
+                <label>Preço unitário (R$)</label>
+                <input type="number" id="preco" min="0" step="0.01" required>
+
+                <button class="btn-principal" type="submit">
+                    Adicionar produto
+                </button>
+
+            </form>
+
+            <h3>Produtos</h3>
+            <ul id="listaCompras"></ul>
+
+            <div class="calculadora">
+                <h3>Calculadora de compra</h3>
+                <p>Total: <strong id="totalCompra">R$ 0,00</strong></p>
+            </div>
+        </section>
+
+        <section id="tela5" class="tela">
+            <h2>Controle de gastos</h2>
+
+            <div class="card-gastos">
+                <div class="gasto">
+                    <span>Orçamento</span>
+                    <strong id="valorOrcamento">R$ 0,00</strong>
+                </div>
+
+                <div class="gasto">
+                    <span>Gasto total</span>
+                    <strong id="valorGasto">R$ 0,00</strong>
+                </div>
+
+                <div class="gasto">
+                    <span>Restante</span>
+                    <strong id="valorRestante">R$ 0,00</strong>
+                </div>
+            </div>
+
+            <div class="barra-orcamento">
+                <div id="progressoGasto" class="progresso"></div>
+            </div>
+
+            <p id="mensagemGasto"></p>
+        </section>
+
+        <section id="tela6" class="tela">
+            <h2>Controle de água 💧</h2>
+
+            <div class="card-agua">
+                <h3>Consumo diário</h3>
+                <strong id="aguaTotal">0 ml</strong>
+                <p id="aguaMetaTexto">Meta: 2000 ml</p>
+
+                <div class="barra-orcamento">
+                    <div id="progressoAgua" class="progresso"></div>
+                </div>
+            </div>
+
+            <div class="botoes-agua">
+                <button onclick="adicionarAgua(200)">+200 ml</button>
+                <button onclick="adicionarAgua(300)">+300 ml</button>
+                <button onclick="adicionarAgua(500)">+500 ml</button>
+                <button onclick="removerAgua()">Desfazer</button>
+            </div>
+
+            <label>Meta diária (ml)</label>
+            <input type="number" id="metaAgua" value="2000" min="1">
+
+            <button class="btn-principal" onclick="salvarMetaAgua()">
+                Salvar meta
+            </button>
+        </section>
+
+        <section id="tela7" class="tela">
+            <h2>Minhas metas 🎯</h2>
+
+            <form id="formMetas">
+
+                <label>Meta de refeições planejadas</label>
+                <input type="number" id="metaRefeicoes" min="1" required>
+
+                <label>Meta de marmitas semanais</label>
+                <input type="number" id="metaMarmitas" min="0" required>
+
+                <label>Meta de orçamento semanal (R$)</label>
+                <input type="number" id="metaOrcamento" min="0" step="0.01" required>
+
+                <button class="btn-principal" type="submit">
+                    Salvar metas
+                </button>
+
+            </form>
+
+            <div id="resumoMetas" class="card-gastos"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>NutriWork © 2026</p>
+        <p>Tecnologia a favor da alimentação saudável 💚</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

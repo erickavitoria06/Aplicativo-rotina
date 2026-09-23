@@ -1,0 +1,383 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --azul: #1769aa;
+    --azul-escuro: #0b3155;
+    --azul-claro: #eaf5ff;
+    --verde: #20a46b;
+    --verde-escuro: #14734a;
+    --verde-claro: #e8f8ef;
+    --branco: #fff;
+    --fundo: #f4f8fb;
+    --texto: #5d6b78;
+    --borda: #dce7ef;
+    --vermelho: #dc3545;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--fundo);
+    color: var(--azul-escuro);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--azul-escuro), var(--azul));
+    color: white;
+    text-align: center;
+    padding: 32px 20px;
+}
+
+.header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.header p {
+    color: #d8efff;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 14px;
+    background: white;
+    border-bottom: 1px solid var(--borda);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.menu button {
+    border: none;
+    background: transparent;
+    color: var(--azul-escuro);
+    font-weight: 600;
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu button:hover {
+    background: var(--azul-claro);
+    color: var(--azul);
+}
+
+.container {
+    width: min(100% - 32px, 900px);
+    margin: 35px auto;
+    flex: 1;
+}
+
+.tela {
+    display: none;
+    background: white;
+    padding: clamp(20px, 4vw, 38px);
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(11, 49, 85, 0.08);
+    border: 1px solid var(--borda);
+    animation: aparecer 0.3s ease;
+}
+
+.tela.ativa {
+    display: block;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tela h2 {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.tela h2::after {
+    content: "";
+    display: block;
+    width: 55px;
+    height: 4px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--azul), var(--verde));
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background: #fbfdff;
+    color: var(--azul-escuro);
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(23, 105, 170, 0.12);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.btn-principal {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 13px 18px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, var(--azul), var(--verde));
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-principal:hover {
+    filter: brightness(0.92);
+    transform: translateY(-2px);
+}
+
+.foto-perfil {
+    display: none;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--verde);
+    margin: 10px auto 20px;
+}
+
+.refeicao {
+    background: #f8fbfd;
+    border: 1px solid var(--borda);
+    border-left: 4px solid var(--verde);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 18px;
+}
+
+#listaCompras {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+#listaCompras li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 14px 16px;
+    background: var(--verde-claro);
+    border: 1px solid #ccebd9;
+    border-radius: 10px;
+}
+
+#listaCompras li button {
+    background: #ffe9eb;
+    color: var(--vermelho);
+    border: none;
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.calculadora,
+.card-agua {
+    background: var(--azul-claro);
+    border: 1px solid #cce2f5;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.card-gastos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.gasto {
+    background: white;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.gasto span {
+    color: var(--texto);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.gasto strong {
+    color: var(--verde);
+    font-size: clamp(1rem, 3vw, 1.35rem);
+    overflow-wrap: anywhere;
+}
+
+.barra-orcamento {
+    width: 100%;
+    height: 14px;
+    background: #e4edf3;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.progresso {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--azul), var(--verde));
+    border-radius: 20px;
+    transition: width 0.5s;
+}
+
+.botoes-agua {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.botoes-agua button {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: var(--azul);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.botoes-agua button:hover {
+    background: var(--verde-escuro);
+}
+
+footer {
+    background: var(--azul-escuro);
+    color: #c9dce9;
+    text-align: center;
+    padding: 25px 20px;
+    margin-top: auto;
+    font-size: 0.82rem;
+}
+
+footer p + p {
+    margin-top: 4px;
+    color: #9dc9b2;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+
+    .menu button {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        font-size: 0.82rem;
+    }
+
+    .container {
+        width: min(100% - 24px, 900px);
+        margin: 25px auto;
+    }
+
+    .card-gastos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gasto:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 22px 14px;
+    }
+
+    .container {
+        width: calc(100% - 20px);
+        margin: 18px auto;
+    }
+
+    .tela {
+        padding: 22px 16px;
+        border-radius: 12px;
+    }
+
+    .card-gastos {
+        grid-template-columns: 1fr;
+    }
+
+    .gasto:last-child {
+        grid-column: auto;
+    }
+
+    #listaCompras li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #listaCompras li button {
+        width: 100%;
+    }
+
+    .botoes-agua {
+        grid-template-columns: 1fr 1fr;
+    }
+}
